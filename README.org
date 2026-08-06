@@ -15,7 +15,7 @@ pre.src, pre.example {
 Go to https://ondemand.msi.umn.edu . After logging in, click Interactive Apps and select Desktop. For the Account select ****. For the Resources select Interactive. Once the job starts, click Launch Persistent Desktop.
 
 #+caption: This is a job card in Open OnDemand. For working with images, you will likely want to make sure the Image Quality is set to 9 (high). Compression is largely irrelevant but can affect latency at the extremes.
-file:assets/ondemand_card.png
+[[file:assets/ondemand_card.png]]
 
 * COMMENT Getting the data
 The following will involve working in a terminal within the OnDemand desktop environment. Copying and pasting into and out of this desktop is handled by a clipboard, by default located within a blue tab on the right side of your browser window.
