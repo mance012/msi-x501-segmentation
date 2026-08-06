@@ -116,7 +116,7 @@ run("Cellpose-SAM...", "cp_model=cpsam_v2 custom_model= cell_diameter=30 chan0=1
 * Automating the segmentation
 #+begin_src java
 // Set the path where the images are located.
-dir = "/projects/standard/msistaff/mance012/projects/image-proc-workshop/advanced/Fluo-C3DL-MDA231/01";
+dir = "/path/to/data/Fluo-C3DL-MDA231/01";
 // Get a list of all the files in the directory.
 files = getFileList(dir);
 
@@ -140,7 +140,7 @@ titles = getList("image.titles");
 for (i = 0; i < titles.length; i++) {
     if (titles[i].contains("Cellpose-SAM")) {
         selectImage(titles[i]);
-        saveAs("Tiff", "/projects/standard/msistaff/mance012/projects/image-proc-workshop/advanced/all_times.tif_Cellpose-SAM.tif");
+        saveAs("Tiff", "/output/path/Cellpose-SAM_segments.tif");
         break;
     }
 }
