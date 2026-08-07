@@ -93,15 +93,15 @@ Cellpose model (=cp_model=) = cpsam_v2
 
 Mode 3D (=mode_3d=) = 3D
 
-Torch version (=torchversion=) = cu130
+Torch version (=torchversion=) = cu126
 
 Use GPU (=usegpu=) = ✓
 #+end_quote
 
-First, we'll use the improved Cellpose-SAM version 2 (cpsam_v2) model instead of the older cpsam model. We'll also change the Mode 3D from None (purely 2D) to 3D to process an entire z-stack. The last thing we'll change is the Torch version, from =cpu= (running on CPU, slow) to =cu130= (running on a GPU with CUDA 13.0, fast). The option Use GPU should be =true= in the command or the GPU will not be used, even if it is available. The final command should look like this:
+First, we'll use the improved Cellpose-SAM version 2 (cpsam_v2) model instead of the older cpsam model. We'll also change the Mode 3D from None (purely 2D) to 3D to process an entire z-stack. The last thing we'll change is the Torch version, from =cpu= (running on CPU, slow) to =cu126= (running on a GPU with CUDA 12.6, fast). The option Use GPU should be =true= in the command or the GPU will not be used, even if it is available. The final command should look like this:
 
 #+begin_src java
-run("Cellpose-SAM...", "cp_model=cpsam_v2 custom_model= cell_diameter=30 chan0=1 chan1=None chan2=None min_size=15 normalize=true resample=true return_rois=false cellprob_threshold=0.0 flow_threshold=0.4 tile_overlap=0.1 niter=0 compute_flows=false mode_3d=3D stitch_threshold=0.0 flow3d_smooth=0 torchversion=cu130 usegpu=true");
+run("Cellpose-SAM...", "cp_model=cpsam_v2 custom_model= cell_diameter=30 chan0=1 chan1=None chan2=None min_size=15 normalize=true resample=true return_rois=false cellprob_threshold=0.0 flow_threshold=0.4 tile_overlap=0.1 niter=0 compute_flows=false mode_3d=3D stitch_threshold=0.0 flow3d_smooth=0 torchversion=cu126 usegpu=true");
 #+end_src
 
 * Automating the segmentation
@@ -124,7 +124,7 @@ for (i = 0; i < files.length; i++) {
 run("Concatenate...", "all_open title=all_times.tif open");
 
 // Run Cellpose-SAM using the parameters for GPU segmentation.
-run("Cellpose-SAM...", "cp_model=cpsam_v2 custom_model= cell_diameter=30 chan0=1 chan1=None chan2=None min_size=15 normalize=true resample=true return_rois=false cellprob_threshold=0.0 flow_threshold=0.4 tile_overlap=0.1 niter=0 compute_flows=false mode_3d=3D stitch_threshold=0.0 flow3d_smooth=0 torchversion=cu130 usegpu=true");
+run("Cellpose-SAM...", "cp_model=cpsam_v2 custom_model= cell_diameter=30 chan0=1 chan1=None chan2=None min_size=15 normalize=true resample=true return_rois=false cellprob_threshold=0.0 flow_threshold=0.4 tile_overlap=0.1 niter=0 compute_flows=false mode_3d=3D stitch_threshold=0.0 flow3d_smooth=0 torchversion=cu126 usegpu=true");
 
 // Search for the newly created segmentation image and save it.
 titles = getList("image.titles");
