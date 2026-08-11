@@ -178,7 +178,7 @@ fiji --headless -macro /absolute/path/to/cellpose_sam.ijm
 
 Once you are done editing your job, ask your instructor to look it over and click /Submit/ on the Jobs page to submit the job to the queue.
 
-You can view the status of your job(s) with
+You can view the status of your job(s) in a terminal with
 #+begin_src sh
 squeue --me
 #+end_src
