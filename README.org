@@ -17,8 +17,10 @@ Go to https://ondemand.msi.umn.edu . After logging in, click Interactive Apps an
 #+caption: This is a job card in Open OnDemand. For working with images, you will likely want to make sure the Image Quality is set to 9 (high). Compression is largely irrelevant but can affect latency at the extremes.
 [[file:assets/ondemand_card.png]]
 
-* COMMENT Getting the data
+* Getting the data
 The following will involve working in a terminal within the OnDemand desktop environment. Copying and pasting into and out of this desktop is handled by a clipboard, by default located within a blue tab on the right side of your browser window.
+
+We will be using one of the datasets from the [[https://celltrackingchallenge.net][cell tracking challenge]], MDA231 human breast carcinoma cells infected with a pMSCV vector including the GFP sequence, embedded in a collagen matrix.
 
 Open a terminal and type
 
