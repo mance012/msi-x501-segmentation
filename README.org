@@ -173,7 +173,7 @@ nvidia-smi
 module load fiji/msi-x501
 
 # FIXME: Run the Fiji macro in headless mode since it will need to run without a graphical session.
-fiji --headless -macro /path/to/cellpose_sam.ijm
+fiji --headless -macro /absolute/path/to/cellpose_sam.ijm
 #+end_src
 
 Once you are done editing your job, ask your instructor to look it over and click /Submit/ on the Jobs page to submit the job to the queue.
