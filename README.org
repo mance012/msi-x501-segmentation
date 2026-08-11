@@ -148,7 +148,7 @@ for (i = 0; i < titles.length; i++) {
 * Submitting jobs
 At MSI we use the SLURM scheduler. A scheduler considers what resources are requested and what resources are available, and determines when resources can be allocated to a request (called a /job/). The more resources you ask for (e.g. memory, cores, time), the more time your job is likely to spend on the /queue/ as it awaits allocation. We will request a modest (by high-performance computing standards) amount of resources and most importantly we will request an NVIDIA A100 GPU.
 
-In Open OnDemand, select /Jobs/ → /Job Composer/. Create a /New Job/ and select /From Default Template/. Scroll down to where it says /Submit Script/ and click /Open Editor/. Delete the contents of the file and paste in the following snippet, replacing the asterisks next to account and partition with what the instructors provide, and replacing =YOUR.EMAIL.HERE@umn.edu= with your UMN email address:
+In Open OnDemand, select /Jobs/ → /Job Composer/. Create a /New Job/ and select /From Default Template/. Scroll down to where it says /Submit Script/ and click /Open Editor/. Delete the default contents of the file and paste in the following snippet, replacing the asterisks next to account and partition with what the instructors provide, and replacing =YOUR.EMAIL.HERE@umn.edu= with your UMN email address:
 
 #+begin_src bash
 #!/bin/bash -l
