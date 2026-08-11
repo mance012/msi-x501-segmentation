@@ -120,7 +120,7 @@ files = getFileList(dir);
 
 // Iterate over the files list.
 for (i = 0; i < files.length; i++) {
-    // The files list contains all files in the directory, including other directories, so check if the file name ends in ".tif" or ".tiff" and starts with "t".
+    // The files list contains all files in the directory, including other directories, so check if the file name ends in ".tif" or ".tiff" and starts with "t". This pattern is highly specific to the dataset we are using.
     if ((endsWith(files[i], ".tif") || endsWith(files[i], ".tiff")) && startsWith(files[i], "t")) {
 	// Open the file using the absolute path.
 	open(dir + "/" + files[i]);
@@ -181,7 +181,7 @@ Submit the job with
 sbatch myjobscript.sh
 #+end_src
 
-You can view the status of your jobs with
+You can view the status of your job(s) with
 #+begin_src sh
 squeue --me
 #+end_src
