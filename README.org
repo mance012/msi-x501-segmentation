@@ -1,4 +1,4 @@
-#+title: Segmentation Instructions
+#+title: Cellpose-SAM Batch Workflow
 #+author: Angel Mancebo and Myat Mo
 #+options: ^:nil
 
