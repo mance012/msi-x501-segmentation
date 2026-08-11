@@ -109,9 +109,12 @@ run("Cellpose-SAM...", "cp_model=cpsam_v2 custom_model= cell_diameter=30 chan0=1
 #+end_src
 
 * Automating the segmentation
+Copy and paste the following script into the macro editor (/Plugins/ → /New/ → /Macro/). Edit the input and output paths (look for the lines below the =FIXME= comments).
+
+#+name: cellpose_sam.ijm
 #+begin_src java
-// Set the path where the images are located.
-dir = "/path/to/data/Fluo-C3DL-MDA231/01";
+// FIXME: Set the path where the images are located.
+dir = "/absolute/path/to/data/Fluo-C3DL-MDA231/01";
 // Get a list of all the files in the directory.
 files = getFileList(dir);
 
@@ -135,13 +138,18 @@ titles = getList("image.titles");
 for (i = 0; i < titles.length; i++) {
     if (titles[i].contains("Cellpose-SAM")) {
         selectImage(titles[i]);
-        saveAs("Tiff", "/output/path/Cellpose-SAM_segments.tif");
+        // FIXME: Set the path to save the final image to.
+        saveAs("Tiff", "/absolute/output/path/Cellpose-SAM_segments.tif");
         break;
     }
 }
 #+end_src
 
 * Submitting jobs
+At MSI we use the SLURM scheduler. A scheduler considers what resources are requested and what resources are available, and determines when resources can be allocated to a request (called a /job/). The more resources you ask for (e.g. memory, cores, time), the more time your job is likely to spend on the /queue/ as it awaits allocation. We will request a modest (by high-performance computing standards) amount of resources and most importantly we will request an NVIDIa A100 GPU.
+
+In Open OnDemand, select /Jobs/ → /Job Composer/. Create a /New Job/ and select /From Default Template/. Scroll down to where it says /Submit Script/ and click /Open Editor/. Delete the contents of the file and paste in the following snippet, replacing the asterisks next to account and partition with what the instructors provide, and replacing =YOUR.EMAIL.HERE@umn.edu= with your UMN email address:
+
 #+begin_src bash
 #!/bin/bash -l
 #SBATCH --time=1:00:00
@@ -164,8 +172,8 @@ nvidia-smi
 # Load the fiji module to get access to fiji.
 module load fiji/msi-x501
 
-# Run the Fiji macro in headless mode since it will need to run without a graphical session.
-fiji --headless -macro cellpose_sam.ijm
+# FIXME: Run the Fiji macro in headless mode since it will need to run without a graphical session.
+fiji --headless -macro /path/to/cellpose_sam.ijm
 #+end_src
 
 Submit the job with
