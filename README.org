@@ -56,17 +56,17 @@ In Fiji, open one of the images by either dragging and dropping it from the file
 
 /File/ → /Open.../
 
-in Fiji. Once an image is opened, click
+in Fiji and navigating to the directory the file is located in. Once an image is opened, click
 
 /Plugins/ → /Segmentation/ → /Cellpose-SAM/
 
-to launch Cellpose with SAM segmentation. If you can't see the /Segmentation/ section under the /Plugins/ menu, you may need to increase the height of your browser window.
+to launch Cellpose-SAM segmentation. If you can't see the /Segmentation/ section under the /Plugins/ menu, you may need to increase the height of your browser window.
 
-When you launch Cellpose-SAM for the first time, Appose will auto-install the Cellpose-SAM environment to your home directory and an installation popup will appear. This may take a few moments. Once the installation is finished, the Cellpose-SAM window will appear. Before you proceed to segmenting any images, close the Cellpose-SAM window and open the macro recorder
+Before you proceed to segmenting any images, open the macro recorder
 
 /Plugins/ → /Macros/ → /Record.../
 
-Since segmenting on CPU will take quite a long time for all 3D images, we will need to record the execution of Cellpose-SAM so that we can later automate it for running on a GPU. To save time, we will duplicate a small region of the first slice of the image and run Cellpose-SAM on only that. Find a slice with visible objects and crop out a small region containing an object.
+Since segmenting on CPU will take quite a long time for all 3D images (or even one image, for that matter), we will need to record the execution of Cellpose-SAM so that we can later automate it for running on a GPU. To save time, we will duplicate a small region of the first slice of the image and run Cellpose-SAM on only that. Find a slice with visible objects and crop out a small region containing an object.
 
 For our 2D run, in the Cellpose-SAM options select
 
@@ -79,6 +79,8 @@ Torch version = cpu
 
 Use GPU = ✓
 #+end_quote
+
+When you run Cellpose-SAM for the first time, Appose will auto-install the Cellpose-SAM environment to your home directory and an installation popup will appear. This will take a few moments. Once the installation is finished, the segmentation process will start and you will see =Starting process...= appear in the terminal that Fiji was launched from.
 
 After Cellpose-SAM is finished running, copy the output of the macro recorder, specifically the line beginning with =run("Cellpose-SAM..."=. Don't worry about the quality of the segmentation at this stage; we are only interested in the command that we'll need to run the segmentation as a batch job and we'll make the necessary changes to it to get a higher quality segmentation while benefiting from the acceleration of a GPU.
 
