@@ -109,7 +109,7 @@ run("Cellpose-SAM...", "cp_model=cpsam_v2 custom_model= cell_diameter=30 chan0=1
 #+end_src
 
 * Automating the segmentation
-Copy and paste the following script into the macro editor (/Plugins/ → /New/ → /Macro/). Edit the input and output paths (look for the lines below the =FIXME= comments).
+Copy and paste the following script into the macro editor (/Plugins/ → /New/ → /Macro/). Edit the input and output paths (look for the lines below the =FIXME= comments). Save the macro to some path within your home directory under the name =cellpose_sam.ijm=.
 
 #+name: cellpose_sam.ijm
 #+begin_src java
@@ -139,7 +139,7 @@ for (i = 0; i < titles.length; i++) {
     if (titles[i].contains("Cellpose-SAM")) {
         selectImage(titles[i]);
         // FIXME: Set the path to save the final image to.
-        saveAs("Tiff", "/absolute/output/path/Cellpose-SAM_segments.tif");
+        saveAs("Tiff", "/absolute/output/path/Fluo-C3DL-MDA231_Cellpose-SAM_segments.tif");
         break;
     }
 }
