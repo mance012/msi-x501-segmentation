@@ -176,10 +176,7 @@ module load fiji/msi-x501
 fiji --headless -macro /path/to/cellpose_sam.ijm
 #+end_src
 
-Submit the job with
-#+begin_src sh
-sbatch myjobscript.sh
-#+end_src
+Once you are done editing your job, ask your instructor to look it over and click /Submit/ on the Jobs page to submit the job to the queue.
 
 You can view the status of your job(s) with
 #+begin_src sh
