@@ -158,8 +158,7 @@ In Open OnDemand, select /Jobs/ → /Job Composer/. Create a /New Job/ and selec
 #SBATCH --tmp=10g
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=YOUR.EMAIL.HERE@umn.edu
-#SBATCH --account=****
-#SBATCH --partition=****
+#SBATCH --partition=gpu-tutorial
 #SBATCH --gres=gpu:a100:1
 #SBATCH --output=slurm_job_logs/job_%j.txt
 
