@@ -11,13 +11,13 @@ pre.src, pre.example {
 </style>
 #+end_export
 
-* Accessing MSI
+* COMMENT Accessing MSI
 Go to https://ondemand.msi.umn.edu . After logging in, click Interactive Apps and select Desktop. For the Account select ****. For the Resources select Interactive. Once the job starts, click Launch Persistent Desktop.
 
 #+caption: This is a job card in Open OnDemand. For working with images, you will likely want to make sure the Image Quality is set to 9 (high). Compression is largely irrelevant but can affect latency at the extremes.
 [[file:assets/ondemand_card.png]]
 
-* Getting the data
+* COMMENT Getting the data
 The following will involve working in a terminal within the OnDemand desktop environment. Should you like to, copying and pasting into and out of this desktop is handled by a clipboard, by default located within a blue tab on the right side of your browser window.
 
 We will be using one of the datasets from the [[https://celltrackingchallenge.net][Cell Tracking Challenge]], /MDA231 human breast carcinoma cells infected with a pMSCV vector including the GFP sequence, embedded in a collagen matrix/.
@@ -36,7 +36,7 @@ unzip Fluo-C3DL-MDA231.zip
 
 to extract the data. The images will be located under =Fluo-C3DL-MDA231/01=
 
-* Accessing Fiji
+* COMMENT Accessing Fiji
 Once you are in the desktop session, open a terminal and type
 
 #+begin_src bash
