@@ -118,7 +118,7 @@ dir = "/absolute/path/to/data/Fluo-C3DL-MDA231/01";
 // Get a list of all the files in the directory.
 files = getFileList(dir);
 
-// Iterate over the files list.
+// FIXME: Iterate over the files list.
 for (i = 0; i < files.length; i++) {
     // The files list contains all files in the directory, including other directories, so check if the file name ends in ".tif" or ".tiff" and starts with "t". This pattern is highly specific to the dataset we are using.
     if ((endsWith(files[i], ".tif") || endsWith(files[i], ".tiff")) && startsWith(files[i], "t")) {
