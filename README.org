@@ -2,22 +2,13 @@
 #+author: Angel Mancebo and Myat Mo
 #+options: ^:nil
 
-#+begin_export html
-<style>
-pre.src, pre.example {
-    white-space: pre-wrap;
-    word-break: break-all;
-}
-</style>
-#+end_export
-
-* COMMENT Accessing MSI
+* Accessing MSI
 Go to https://ondemand.msi.umn.edu . After logging in, click Interactive Apps and select Desktop. For the Account select ****. For the Resources select Interactive. Once the job starts, click Launch Persistent Desktop.
 
 #+caption: This is a job card in Open OnDemand. For working with images, you will likely want to make sure the Image Quality is set to 9 (high). Compression is largely irrelevant but can affect latency at the extremes.
 [[file:assets/ondemand_card.png]]
 
-* COMMENT Getting the data
+* Getting the data
 The following will involve working in a terminal within the OnDemand desktop environment. Should you like to, copying and pasting into and out of this desktop is handled by a clipboard, by default located within a blue tab on the right side of your browser window.
 
 We will be using one of the datasets from the [[https://celltrackingchallenge.net][Cell Tracking Challenge]], /MDA231 human breast carcinoma cells infected with a pMSCV vector including the GFP sequence, embedded in a collagen matrix/.
@@ -36,7 +27,7 @@ unzip Fluo-C3DL-MDA231.zip
 
 to extract the data. The images will be located under =Fluo-C3DL-MDA231/01=
 
-* COMMENT Accessing Fiji
+* Accessing Fiji
 Once you are in the desktop session, open a terminal and type
 
 #+begin_src bash
@@ -120,14 +111,18 @@ files = getFileList(dir);
 
 // FIXME: Iterate over the files list.
 for (i = 0; i < files.length; i++) {
-    // The files list contains all files in the directory, including other directories, so check if the file name ends in ".tif" or ".tiff" and starts with "t". This pattern is highly specific to the dataset we are using.
+    // The files list contains all files in the directory, including
+    // other directories, so check if the file name ends in ".tif" or
+    // ".tiff" and starts with "t". This pattern is highly specific to
+    // the dataset we are using.
     if ((endsWith(files[i], ".tif") || endsWith(files[i], ".tiff")) && startsWith(files[i], "t")) {
 	// Open the file using the absolute path.
 	open(dir + "/" + files[i]);
     }
 }
 
-// Concatenate all open files. This will create a new time axis, resulting in a 4-dimensional image.
+// Concatenate all open files. This will create a new time axis,
+// resulting in a 4-dimensional image.
 run("Concatenate...", "all_open title=all_times.tif open");
 
 // Run Cellpose-SAM using the parameters for GPU segmentation.
@@ -158,7 +153,7 @@ In Open OnDemand, select /Jobs/ → /Job Composer/. Create a /New Job/ and selec
 #SBATCH --tmp=10g
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=YOUR.EMAIL.HERE@umn.edu
-#SBATCH --partition=gpu-tutorial
+#SBATCH --partition=msigpu
 #SBATCH --gres=gpu:a100:1
 #SBATCH --output=slurm_job_logs/job_%j.txt
 
@@ -182,5 +177,5 @@ You can view the status of your job(s) in a terminal with
 squeue --me
 #+end_src
 
-* COMMENT Running the tracking
-In Fiji, open the segmented image. Go to 
+* Inspect results
+Look through the z-stack of cell segments for a specific time point and compare it to the corresponding microscopy image. Do you notice anything that looks like oversegmentation or undersegmentation? If so, what parameter(s) could you change in Cellpose-SAM to improve this?
